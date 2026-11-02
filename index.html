@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>木木梟 Studio V6</title>
+<style>
+:root{--bg:#f4efe0;--pn:#fbf7ea;--cd:#fffdf4;--fd:#fffdf6;--ln:#e2d6b8;--l2:#d4c49f;--tx:#4a3a28;--mu:#8a7757;--sb:#6b5a40;--ac:#5b8a47;--a2:#4a7a38;--nv:#e3efd5;--ot:#f1ead2;--dg:#b5654a;--bt:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b2118;--pn:#222a1e;--cd:#283124;--fd:#20281c;--ln:#364230;--l2:#46553d;--tx:#efe8d2;--mu:#a3ad8f;--sb:#cdd4b8;--ac:#86b56d;--a2:#a9d48d;--nv:#34452c;--ot:#2b3626;--dg:#d98c72;--bt:#1b2118;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b2118;--pn:#222a1e;--cd:#283124;--fd:#20281c;--ln:#364230;--l2:#46553d;--tx:#efe8d2;--mu:#a3ad8f;--sb:#cdd4b8;--ac:#86b56d;--a2:#a9d48d;--nv:#34452c;--ot:#2b3626;--dg:#d98c72;--bt:#1b2118;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 system-ui,-apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;background:var(--pn);border-bottom:2px solid var(--ln)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;letter-spacing:2px;color:var(--a2)}
+.q{flex:1;min-width:180px;max-width:320px;cursor:pointer}.qb{height:10px;border-radius:6px;background:var(--ot);border:1px solid var(--l2);overflow:hidden}.qb i{display:block;height:100%;width:100%;background:var(--ac);transition:width .3s}.q small{color:var(--mu);font-size:12px}
+nav{display:flex;gap:6px;padding:10px 16px;overflow-x:auto;background:var(--pn);border-bottom:1px solid var(--ln)}
+.tb{border:0;border-radius:10px;padding:9px 14px;background:transparent;color:var(--mu);white-space:nowrap}.tb.on{background:var(--nv);color:var(--a2);font-weight:700}
+main{max-width:760px;margin:0 auto;padding:18px 16px 40px}
+h1{font-size:20px;margin:0}h2{font-size:16px;margin:22px 0 0}
+label{display:block;font-size:13px;color:var(--sb);margin:14px 0 6px}
+textarea,input,select{width:100%;color:var(--tx);background:var(--fd);border:1px solid var(--l2);border-radius:10px;padding:10px;outline:none}
+textarea:focus,input:focus,select:focus{border-color:var(--ac)}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--ac);padding:0;flex:none}
+textarea{resize:vertical;min-height:80px}
+.btn{background:var(--ac);color:var(--bt);border:0;border-radius:10px;padding:10px 16px;font-weight:600;white-space:nowrap}.btn:disabled{opacity:.6;cursor:wait}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.card{background:var(--cd);border:1px solid var(--l2);border-radius:14px;padding:14px;margin-bottom:12px}
+.ct{display:flex;align-items:center;gap:10px}.nm{font-weight:700;border:0;background:transparent}
+.x{margin-left:auto;width:auto;border:0;background:transparent;color:var(--dg);font-size:22px;padding:0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid var(--l2);background:var(--fd);color:var(--sb);border-radius:99px;padding:6px 12px}.chip.on{background:var(--ac);color:var(--bt);border-color:var(--ac)}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0 12px}
+#st{margin:10px 0;color:var(--sb);overflow-wrap:anywhere}
+.out{text-align:center}.out img{max-width:100%;border-radius:12px}.out a{color:var(--a2)}
+.mu{color:var(--mu);font-size:12px;line-height:1.7}.hide{display:none}
+details{margin-top:12px;color:var(--sb)}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:12px}
+.th{width:72px;height:72px;object-fit:cover;border-radius:10px}.qp{padding:4px 16px 14px;background:var(--pn);border-bottom:1px solid var(--ln)}.qp input{max-width:200px}
+.ex{background:none;border:0;color:var(--a2);font-size:16px;padding:0 4px}.x+.x{margin-left:0}
+.th.s{width:40px;height:40px}.av{width:20px;height:20px;border-radius:50%;object-fit:cover;vertical-align:middle}
+.out{min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--ot);border-radius:14px;padding:8px}.out img{width:100%}
+.md{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;gap:10px;padding:calc(12px + env(safe-area-inset-top,0px)) 14px calc(12px + env(safe-area-inset-bottom,0px))}.md.hide{display:none}.md textarea{flex:1;font-size:16px}.mh{display:flex;justify-content:space-between;align-items:center}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}.gal img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:10px;cursor:pointer}
+a.btn{text-decoration:none;display:inline-block}
+body{background-image:var(--bgi,none);background-size:cover;background-attachment:fixed}
+.hb main{background:color-mix(in srgb,var(--bg) 86%,transparent);border-radius:18px;margin-top:12px}
+.hd{background:linear-gradient(135deg,var(--pn),var(--nv))}.card{box-shadow:0 2px 10px rgba(0,0,0,.07)}.btn{box-shadow:0 2px 6px rgba(0,0,0,.15)}.tb.on{box-shadow:inset 0 -3px 0 var(--ac)}
+.save-state{font-size:12px;color:var(--mu);padding:6px 10px;border:1px solid var(--ln);border-radius:999px;background:var(--cd)}
+.mobile-action{display:none}
+.out{max-height:42vh;overflow:auto;justify-content:flex-start}
+.out img{width:auto;max-width:100%;max-height:36vh;object-fit:contain}
+@media(max-width:640px){body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}.hd{position:sticky;top:0;z-index:8;padding:9px 12px}.logo{letter-spacing:1px}.mobile-action{display:flex;position:fixed;z-index:15;left:0;right:0;bottom:0;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--pn) 94%,transparent);border-top:1px solid var(--ln);backdrop-filter:blur(12px)}.mobile-action #mobileStatus{font-size:12px;color:var(--mu);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mobile-action .btn{min-width:118px}.out{max-height:34vh}.out img{max-height:29vh}main{padding:14px 12px 24px}nav{position:sticky;top:54px;z-index:7;padding:7px 10px}.tb{padding:8px 11px}}
+.hero{text-align:center;padding:14px 0 6px}.ban{width:100%;max-height:260px;object-fit:cover;border-radius:18px}.ae{border-bottom:1px dashed var(--l2);padding:6px 0}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="owl" viewBox="0 0 64 64"><ellipse cx="12" cy="42" rx="5" ry="10" fill="#a98557"/><ellipse cx="52" cy="42" rx="5" ry="10" fill="#a98557"/><ellipse cx="32" cy="38" rx="22" ry="22" fill="#c9a574"/><path d="M32 3c-7 2-10 8-8 13 6-1 10-6 8-13z" fill="#5b8a47"/><ellipse cx="32" cy="32" rx="17" ry="13" fill="#f6efd9"/><circle cx="25" cy="32" r="3.4" fill="#3b2c1d"/><circle cx="39" cy="32" r="3.4" fill="#3b2c1d"/><circle cx="26" cy="31" r="1" fill="#fff"/><circle cx="40" cy="31" r="1" fill="#fff"/><path d="M32 35l-3 4h6z" fill="#e0a84a"/><path d="M32 51c-6-5-11-2-12 2 4 3 9 2 12-2zM32 51c6-5 11-2 12 2-4 3-9 2-12-2z" fill="#5b8a47"/></symbol></svg>
+<header class="hd"><div class="logo"><svg width="32" height="32"><use href="#owl"/></svg><span id="brandTitle">木木梟 STUDIO</span></div><div class="save-state" id="saveState" role="status">本機自動保存</div></header>
+<nav><button class="tb on" data-t="home">🏠 首頁</button><button class="tb" data-t="gen">✦ 生成</button><button class="tb" data-t="chars">🧑 角色管理</button><button class="tb" data-t="arts">🎨 畫師串</button><button class="tb" data-t="his">🕘 歷史</button><button class="tb" data-t="ph">📚 片語</button><button class="tb" data-t="ref">🖼 參考圖</button><button class="tb" data-t="set">⚙ 設定</button></nav>
+<main>
+<section id="t-home"><div class="hero" id="hero"></div>
+<div class="g"><button class="btn" data-go="gen">✦ 開始生成</button><button class="btn" data-go="chars">🧑 角色</button><button class="btn" data-go="arts">🎨 畫師串</button><button class="btn" data-go="his">🕘 歷史</button></div>
+<h2>最近生成</h2><div class="gal" id="hrec"></div></section>
+<section id="t-gen" class="hide">
+<div class="out" id="out"><span class="mu">生成的圖片會顯示在這裡</span></div>
+<div class="row" style="margin-top:12px"><button class="btn gen">✦ 生成</button><div id="st" style="margin:0;flex:1"></div></div>
+<details><summary>場景組合</summary><div class="row" style="margin-top:8px"><select id="scs" style="flex:1"></select><button class="btn" id="sca">套用</button><button class="btn" id="scn">存目前</button><button class="btn" id="scd">刪</button></div></details>
+<details><summary>片語（點一下加進提示詞）</summary><div class="chips" id="phq" style="margin-top:8px"></div></details>
+<details><summary>從圖片匯入參數</summary><input type="file" accept="image/png" id="pim" style="margin-top:8px"></details>
+<label>畫師串（點選啟用／停用，✎ 可修改與調權重）</label><div class="chips" id="chA"></div><div id="aed"></div>
+<label>提示詞 <button class="ex" type="button">⤢</button></label><textarea id="prompt" data-s="prompt" placeholder="masterpiece, best quality, 2girls, beautiful lighting..."></textarea>
+<label>角色（點選啟用／停用）</label><div class="chips" id="chC"></div>
+<label>Negative Prompt（全局） <button class="ex" type="button">⤢</button></label><textarea data-s="neg" placeholder="low quality, blurry..."></textarea>
+<h2>參數</h2><div class="g" id="pg"></div>
+<div class="row" style="margin-top:16px"><button class="btn gen">✦ 生成</button></div>
+<details open><summary>組合後的提示詞</summary><pre id="pvt"></pre></details>
+</section>
+<section id="t-ph" class="hide"><h1>片語庫</h1><div class="mu">常用詞存起來，點一下加進提示詞或負面。</div>
+<label>名稱</label><input id="phn"><label>內容</label><textarea id="pht"></textarea><label>標籤（選填）</label><input id="phg"><div class="row" style="margin-top:12px"><button class="btn" id="pha">+ 加入片語庫</button></div><div id="phl"></div></section>
+<section id="t-his" class="hide"><div class="row"><h1>歷史</h1><div style="display:flex;gap:8px"><button class="btn" id="hfv">只看★</button><button class="btn" id="hclr">清空</button></div></div><div class="mu" style="margin-bottom:10px">圖片與提示詞存在這個瀏覽器裡，清除瀏覽器資料就會消失。</div><div class="gal" id="gal"></div></section>
+<section id="t-chars" class="hide">
+<div class="row"><div><h1>角色管理</h1><div class="mu">每位角色有名字、正面與負面提示詞。勾選的角色才會加進生成。</div></div><div style="display:flex;gap:8px"><button class="btn" id="fc">收起</button><button class="btn" id="addc">+ 新增</button></div></div>
+<div class="chips" id="pos" style="margin-bottom:14px"></div><div id="chars"></div>
+</section>
+<section id="t-arts" class="hide">
+<div class="row"><div><h1>畫師串</h1><div class="mu">貼上整串畫師標籤，加上自訂標籤方便分類。勾選的串會排在提示詞前面。</div></div><div style="display:flex;gap:8px"><button class="btn" id="fa">收起</button><button class="btn" id="adda">+ 新增</button></div></div>
+<div class="chips" id="tf" style="margin-bottom:10px"></div><div class="row"><input id="nt" placeholder="新增標籤…" style="flex:1"><button class="btn" id="ant">+ 標籤</button></div><div id="arts"></div>
+</section>
+<section id="t-ref" class="hide">
+<h1>參考圖</h1><div class="mu">圖片只存在目前頁面，重新整理後要重新上傳。Vibe Transfer 與 Precise Reference 只有 V4.5 能用，V5 暫不支援。</div>
+<h2>圖生圖 Image2Image</h2><input type="file" accept="image/*" id="fi2i"><div id="i2i"></div>
+<h2>風格遷移 Vibe Transfer</h2><input type="file" accept="image/*" id="fvb" multiple>
+<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" data-s="p.norm"> 歸一化參考強度</label><div id="vbs"></div>
+<h2>精確參考 Precise Reference</h2><input type="file" accept="image/*" id="fpr"><div id="prs"></div>
+</section>
+<section id="t-set" class="hide">
+<h1>設定</h1>
+<label>API Base URL</label><input data-s="a.base" autocapitalize="off" autocomplete="off">
+<label>API Key（你的網關 Key）</label><input type="password" data-s="a.key" autocapitalize="off" autocomplete="off">
+<p class="mu">Key 只存在這台裝置的瀏覽器，只會送到上面的 Base URL。角色、提示詞與設定會自動保存在這台裝置。</p>
+<h2>外觀（想放什麼都可以）</h2>
+<label>首頁標題</label><input data-s="ui.title"><label>首頁副標</label><input data-s="ui.sub">
+<label>首頁圖</label><input type="file" accept="image/*" id="fbn"><label>背景圖</label><input type="file" accept="image/*" id="fbg"><label>主色</label><input type="color" id="uiac">
+<div class="row" style="margin-top:12px"><button class="btn" id="uirs">恢復預設外觀</button></div>
+<h2>備份</h2><div class="mu">匯出角色、畫師串（含示圖）、標籤、場景、片語、外觀與參數（不含 API Key）。</div>
+<div class="row" style="margin-top:10px"><button class="btn" id="bx">匯出備份</button><button class="btn" id="bi">匯入備份</button></div><input type="file" id="bif" accept=".json,application/json" class="hide">
+</section>
+</main>
+<div class="mobile-action" id="mobileAction"><span id="mobileStatus">準備就緒</span><button class="btn gen" id="genSticky">✦ 生成</button></div>
+<div class="md hide" id="md"><div class="mh"><strong id="mt"></strong><button class="btn" id="mc">完成</button></div><textarea id="mta"></textarea></div><div class="md hide" id="hm"><div class="mh"><strong>圖片詳情</strong><button class="btn" id="hc">關閉</button></div><div id="hb" style="overflow:auto;flex:1"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+(function(){
+var K="mumuxiao-v2",AN=null,$=function(s){return document.querySelector(s)};
+var D={prompt:"",neg:"",chars:[{id:"c1",name:"角色 1",prompt:"",neg:"",on:true}],arts:[],tl:[],sc:[],ph:[],ui:{title:"木木梟 STUDIO",sub:"今天想畫什麼？",banner:"",bg:"",ac:""},tf:"",vb:[],pr:[],i2i:null,pos:"ai",p:{model:"nai-diffusion-5-full",size:"832x1216",steps:23,scale:5,rescale:0,variety:"",sampler:"k_euler_ancestral",sched:"karras",seed:"",norm:true,istr:0.7,inz:0,uc:0,qt:"1",n:1},a:{base:"https://nai.pkppkq.bond",key:""}};
+var S=load();
+S.arts.forEach(function(o){if(!Array.isArray(o.tags))o.tags=(o.tags||"").split(/[,，\s]+/).filter(Boolean);o.tags.forEach(function(t){if(S.tl.indexOf(t)<0)S.tl.push(t)})});
+function load(){try{var v=JSON.parse(localStorage.getItem(K));if(v)return{prompt:v.prompt||"",neg:v.neg||"",chars:v.chars||D.chars,arts:v.arts||[],tl:v.tl||[],sc:v.sc||[],ph:v.ph||[],ui:Object.assign({},D.ui,v.ui),tf:"",vb:[],pr:[],i2i:null,pos:v.pos||"ai",p:Object.assign({},D.p,v.p),a:Object.assign({},D.a,v.a)}}catch(e){}return JSON.parse(JSON.stringify(D))}
+function save(){try{localStorage.setItem(K,JSON.stringify(S,function(k,v){return(k==="vb"||k==="pr"||k==="i2i")?undefined:v}));var el=$("#saveState");if(el)el.textContent="已保存到這台裝置"}catch(e){var el=$("#saveState");if(el)el.textContent="保存空間不足，請先匯出備份"}}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function uid(){return"i"+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+function tags(o){return o.tags||[]}
+function act(){return S.chars.filter(function(o){return o.on&&o.prompt.trim()})}
+function base(){var a=S.arts.filter(function(o){return o.on&&o.text.trim()}).map(function(o){return(+o.w&&+o.w!==1)?(+o.w+"::"+o.text.trim()+"::"):o.text.trim()});if(S.prompt.trim())a.push(S.prompt.trim());return a.join(", ")}
+function ptxt(){return[base()].concat(act().map(function(o){return"["+o.name+"] "+o.prompt+(o.neg?"  ✕ "+o.neg:"")})).concat(S.neg?["Negative: "+S.neg]:[]).join("\n")||"（尚無內容）"}
+function pv(){$("#pvt").textContent=ptxt()}
+function chips(){
+var h=function(arr,l){return arr.length?arr.map(function(o){return'<button class="chip'+(o.on?" on":"")+'" data-tg="'+l+'" data-id="'+o.id+'">'+(o.img?'<img class="av" src="'+o.img+'"> ':"")+esc(o.name||"未命名")+"</button>"}).join(""):'<span class="mu">（尚無，請到上方分頁新增）</span>'};
+$("#chA").innerHTML=h(S.arts,"arts");$("#chC").innerHTML=h(S.chars,"chars");pv();
+}
+function rc(){$("#chars").innerHTML=S.chars.map(function(o){return'<div class="card" data-l="chars" data-id="'+o.id+'"><div class="ct"><input type="checkbox" data-k="on"'+(o.on?" checked":"")+'>'+(o.img?'<img class="th s" src="'+o.img+'">':"")+'<input class="nm" data-k="name" value="'+esc(o.name)+'" placeholder="角色名字（誰是誰）"><button class="x" data-fold>'+(o.c?"▸":"▾")+'</button><button class="x" data-del>×</button></div>'+(o.c?"":'<label>角色 Prompt <button class="ex" type="button">⤢</button></label><textarea data-k="prompt" placeholder="1girl, long hair, blue eyes...">'+esc(o.prompt)+'</textarea><label>角色負面 Negative <button class="ex" type="button">⤢</button></label><textarea data-k="neg" placeholder="（選填）">'+esc(o.neg)+"</textarea><label>示圖</label><input type=\"file\" accept=\"image/*\" data-img>"+(S.pos==="c"?'<label>位置（A–E 左到右，1–5 上到下）</label><select data-k="pos">'+PO(o.pos||"C3")+"</select>":""))+"</div>"}).join("")||'<p class="mu">還沒有角色，按右上角新增。</p>'}
+function rtf(){var b=function(t,l,x){return'<button class="chip'+(S.tf===t?" on":"")+'" data-tf="'+esc(t)+'">'+esc(l)+(x?' <span data-dt="'+esc(t)+'">×</span>':"")+"</button>"};$("#tf").innerHTML=b("","全部")+S.tl.map(function(t){return b(t,"# "+t,1)}).join("")}
+function ral(){$("#arts").innerHTML=S.arts.filter(function(o){return!S.tf||tags(o).indexOf(S.tf)>-1}).map(function(o){return'<div class="card" data-l="arts" data-id="'+o.id+'"><div class="ct"><input type="checkbox" data-k="on"'+(o.on?" checked":"")+'>'+(o.img?'<img class="th s" src="'+o.img+'">':"")+'<input class="nm" data-k="name" value="'+esc(o.name)+'" placeholder="串名稱"><button class="x" data-fold>'+(o.c?"▸":"▾")+'</button><button class="x" data-del>×</button></div>'+(o.c?"":'<label>畫師串 <button class="ex" type="button">⤢</button></label><textarea data-k="text" placeholder="artist:xxx, artist:yyy, ...">'+esc(o.text)+'</textarea><label>示圖（讓你知道這串畫出來的風格）</label><input type="file" accept="image/*" data-img><label>標籤</label><div class="chips">'+(S.tl.map(function(t){return'<button class="chip'+(tags(o).indexOf(t)>-1?" on":"")+'" data-ot="'+esc(t)+'">'+esc(t)+"</button>"}).join("")||'<span class="mu">先在上方新增標籤</span>')+"</div>")+"</div>"}).join("")||'<p class="mu">沒有符合的畫師串。</p>'}
+var PEN={};
+function aed(){$("#aed").innerHTML=S.arts.filter(function(o){return o.on}).map(function(o){var w=+o.w||1;return'<div data-l="arts" data-id="'+o.id+'" class="ae"><div class="ct">'+(o.img?'<img class="av" src="'+o.img+'">':"")+'<span>'+esc(o.name||"畫師串")+(w!==1?' <span class="mu">×'+w+"</span>":"")+'</span><button class="x" data-pen="'+o.id+'">✎</button></div>'+(PEN[o.id]?'<label>畫師串 <button class="ex" type="button">⤢</button></label><textarea data-k="text" rows="3">'+esc(o.text)+'</textarea><label>權重（1＝不調整，例 1.2）</label><input type="number" step="0.05" data-k="w" value="'+(o.w||1)+'">':"")+"</div>"}).join("")}
+function PO(v){var h="";"ABCDE".split("").forEach(function(l){for(var i=1;i<6;i++)h+="<option"+(l+i===v?" selected":"")+">"+l+i+"</option>"});return h}
+function ctr(o){if(S.pos!=="c")return[{x:0.5,y:0.5}];var c=o.pos||"C3";return[{x:+("ABCDE".indexOf(c[0])*0.2+0.1).toFixed(1),y:+((+c[1]-1)*0.2+0.1).toFixed(1)}]}
+function rpos(){$("#pos").innerHTML='<span class="mu" style="align-self:center">角色位置（全局）</span><button class="chip'+(S.pos!=="c"?" on":"")+'" data-pos="ai">AI’s Choice</button><button class="chip'+(S.pos==="c"?" on":"")+'" data-pos="c">自訂</button>'}
+function ra(){rtf();ral()}
+var MD=[["nai-diffusion-5-full","V5 Full（High）"],["nai-diffusion-5-full-medium","V5 Full Medium"],["nai-diffusion-4-5-full","V4.5 Full"],["nai-diffusion-4-5-curated","V4.5 Curated"],["nai-diffusion-4-full","V4 Full"]];
+if(!MD.some(function(x){return x[0]===S.p.model}))MD.push([S.p.model,S.p.model]);
+var OP={uc:[[0,"Heavy"],[1,"Light"],[2,"Furry Focus"],[3,"Human Focus"],[4,"None"]],qt:[["1","開"],["0","關"]],model:MD,size:[["832x1216","直圖 832×1216"],["1216x832","橫圖 1216×832"],["1024x1024","方圖 1024×1024"]],sampler:["k_euler","k_euler_ancestral","k_dpmpp_2s_ancestral","k_dpmpp_2m","k_dpmpp_sde","k_dpmpp_2m_sde"],sched:["karras","native","exponential","polyexponential"]};
+var F=[["model","模型"],["size","尺寸"],["steps","步數 Steps","1"],["scale","Prompt Guidance","0.1"],["rescale","Prompt Guidance Rescale","0.05"],["variety","Variety+（留空＝關，常用 19）","1"],["sampler","採樣器 Sampler"],["sched","Noise Schedule"],["seed","Seed（留空＝隨機）","1"],["n","一次幾張（多扣額度，上限 4）","1"],["uc","負面預設 UC"],["qt","質量詞"]];
+$("#pg").innerHTML=F.map(function(f){var k=f[0],v=S.p[k],i;
+if(OP[k])i="<select data-s=\"p."+k+"\">"+OP[k].map(function(x){var a=[].concat(x);return"<option value=\""+a[0]+"\""+(a[0]==v?" selected":"")+">"+(a[1]||a[0])+"</option>"}).join("")+"</select>";
+else if(k==="model")i='<input data-s="p.model" list="ml" value="'+esc(v)+'" autocapitalize="off"><datalist id="ml"><option value="nai-diffusion-5-full"><option value="nai-diffusion-5-full-medium"></datalist>';
+else i='<input type="number" step="'+f[2]+'" data-s="p.'+k+'" value="'+esc(v)+'">';
+return"<div><label>"+f[1]+"</label>"+i+"</div>"}).join("");
+document.querySelectorAll("[data-s]").forEach(function(el){var a=el.dataset.s.split("."),v=a.length>1?S[a[0]][a[1]]:S[a[0]];if(el.type==="checkbox")el.checked=!!v;else if(el.tagName!=="SELECT"&&el.value==="")el.value=v}) ;
+document.addEventListener("input",function(e){
+var t=e.target,s=t.dataset.s;
+if(s){var a=s.split(".");var vv=t.type==="checkbox"?t.checked:t.value;if(a.length>1)S[a[0]][a[1]]=vv;else S[s]=vv;save();if(a.length===1)pv();if(a[0]==="ui")rh();return}
+var k=t.dataset.k,c=t.closest("[data-l]");if(!k||!c)return;
+var o=S[c.dataset.l].find(function(x){return x.id===c.dataset.id});if(!o)return;
+o[k]=t.type==="checkbox"?t.checked:t.value;save();if(c.dataset.l==="vb"||c.dataset.l==="pr")saveRefs();chips();if(k==="tags")rtf();
+});
+document.addEventListener("click",function(e){
+var t=e.target,d=t.dataset;
+if(t.classList.contains("ex")){var l=t.closest("label"),ta=l&&l.nextElementSibling;if(ta&&ta.tagName==="TEXTAREA")opn(ta,l.textContent.replace("⤢","").trim());return}
+if(d.h!==undefined){hd(+d.h);return}
+if(d.go){document.querySelector('.tb[data-t="'+d.go+'"]').click();return}
+if(d.pen!==undefined){PEN[d.pen]=!PEN[d.pen];aed();return}
+if(d.pa){addTo("prompt",d.pa);return}
+if(d.pn){addTo("neg",d.pn);return}
+if(d.pd){S.ph=S.ph.filter(function(x){return x.id!==d.pd});save();rph();return}
+if(d.hf!==undefined){var h2=HL[+d.hf];h2.fav=!h2.fav;tx("readwrite",function(s){return s.put(h2)}).then(function(){hd(+d.hf);rgal()});return}
+if(d.hr!==undefined){var h=HL[+d.hr];S.prompt=h.prompt;S.neg=h.neg;Object.assign(S.p,h.p);save();location.reload();return}
+if(d.hx!==undefined){tx("readwrite",function(s){return s.delete(HL[+d.hx].id)}).then(function(){$("#hm").classList.add("hide");rgal()});return}
+if(d.dt!==undefined){S.tl=S.tl.filter(function(x){return x!==d.dt});S.arts.forEach(function(o){o.tags=tags(o).filter(function(x){return x!==d.dt})});if(S.tf===d.dt)S.tf="";save();ra();return}
+if(d.ot!==undefined){var o2=S.arts.find(function(x){return x.id===t.closest("[data-l]").dataset.id}),k=o2.tags.indexOf(d.ot);if(k>-1)o2.tags.splice(k,1);else o2.tags.push(d.ot);save();ral();return}
+if(d.fold!==undefined){var c2=t.closest("[data-l]"),o3=S[c2.dataset.l].find(function(x){return x.id===c2.dataset.id});o3.c=!o3.c;save();(c2.dataset.l==="arts"?ral:rc)();return}
+if(d.tg){var o=S[d.tg].find(function(x){return x.id===d.id});o.on=!o.on;save();chips();rc();ral();aed();return}
+if(d.pos){S.pos=d.pos;save();rpos();rc();return}
+if(d.rm){S.i2i=null;saveRefs();rr();return}
+if(d.tf!==undefined){S.tf=d.tf;rtf();ral();return}
+if(t.hasAttribute("data-del")){var c=t.closest("[data-l]");S[c.dataset.l]=S[c.dataset.l].filter(function(x){return x.id!==c.dataset.id});save();if(c.dataset.l==="vb"||c.dataset.l==="pr")saveRefs();chips();rc();ra();rr();aed();return}
+if(d.t){document.querySelectorAll(".tb").forEach(function(b){b.classList.toggle("on",b===t)});["home","gen","chars","arts","his","ph","ref","set"].forEach(function(n){$("#t-"+n).classList.toggle("hide",n!==d.t)});if(d.t==="his")rgal();else{rc();ra();aed();rh();rph()}}
+});
+$("#addc").onclick=function(){S.chars.unshift({id:uid(),name:"新角色",prompt:"",neg:"",on:true,c:false});save();chips();rc()};
+$("#adda").onclick=function(){S.arts.unshift({id:uid(),name:"新畫師串",text:"",tags:[],on:true,c:false,img:""});S.tf="";save();chips();ra();aed()};
+function rph(){$("#phl").innerHTML=S.ph.map(function(o){return'<div class="card"><div class="ct"><strong>'+esc(o.name)+'</strong><span class="mu">'+esc(o.tag||"")+'</span><button class="x" data-pd="'+o.id+'">×</button></div><div class="mu">'+esc(o.text)+'</div><div class="row" style="margin:8px 0 0"><button class="btn" data-pa="'+o.id+'">加入提示詞</button><button class="btn" data-pn="'+o.id+'">加入負面</button></div></div>'}).join("")||'<p class="mu">還沒有片語。</p>';$("#phq").innerHTML=S.ph.map(function(o){return'<button class="chip" data-pa="'+o.id+'">'+esc(o.name)+"</button>"}).join("")||'<span class="mu">（尚無，到「片語」分頁新增）</span>'}
+function addTo(k,id){var o=S.ph.find(function(x){return x.id===id});S[k]=(S[k]?S[k].replace(/[,，\s]+$/,"")+", ":"")+o.text;save();(k==="neg"?document.querySelector('[data-s="neg"]'):$("#prompt")).value=S[k];pv()}
+$("#pha").onclick=function(){var n=$("#phn").value.trim(),t=$("#pht").value.trim();if(!n||!t)return;S.ph.push({id:uid(),name:n,text:t,tag:$("#phg").value.trim()});save();$("#phn").value=$("#pht").value=$("#phg").value="";rph()};
+function rsc(){$("#scs").innerHTML=S.sc.length?S.sc.map(function(o){return'<option value="'+o.id+'">'+esc(o.name)+"</option>"}).join(""):"<option value=''>（尚無場景）</option>"}
+$("#scn").onclick=function(){var n=window.prompt("場景名稱");if(!n)return;S.sc.push({id:uid(),name:n,a:S.arts.filter(function(o){return o.on}).map(function(o){return o.id}),c:S.chars.filter(function(o){return o.on}).map(function(o){return o.id}),prompt:S.prompt,neg:S.neg,p:JSON.parse(JSON.stringify(S.p))});save();rsc()};
+$("#sca").onclick=function(){var o=S.sc.find(function(x){return x.id===$("#scs").value});if(!o)return;S.arts.forEach(function(x){x.on=o.a.indexOf(x.id)>-1});S.chars.forEach(function(x){x.on=o.c.indexOf(x.id)>-1});S.prompt=o.prompt;S.neg=o.neg;Object.assign(S.p,o.p);save();location.reload()};
+$("#scd").onclick=function(){S.sc=S.sc.filter(function(x){return x.id!==$("#scs").value});save();rsc()};
+function aui(){var u=S.ui,r=document.documentElement.style;if(u.ac){r.setProperty("--ac",u.ac);r.setProperty("--a2",u.ac)}else{r.removeProperty("--ac");r.removeProperty("--a2")}document.body.classList.toggle("hb",!!u.bg);r.setProperty("--bgi",u.bg?'url("'+u.bg+'")':"none")}
+async function rh(){var u=S.ui;$("#brandTitle").textContent=u.title||"木木梟 STUDIO";$("#hero").innerHTML=(u.banner?'<img class="ban" src="'+u.banner+'">':'<svg width="150" height="150"><use href="#owl"/></svg>')+"<h1>"+esc(u.title)+'</h1><div class="mu">'+esc(u.sub)+" · 啟用 "+S.chars.filter(function(o){return o.on}).length+" 位角色、"+S.arts.filter(function(o){return o.on}).length+" 串畫師串</div>";var a=(await hl()).slice(0,4);$("#hrec").innerHTML=a.length?a.map(function(h){return'<img src="'+URL.createObjectURL(h.blob)+'">'}).join(""):'<p class="mu">還沒有紀錄。</p>'}
+$("#fbn").onchange=function(e){var f=e.target.files[0];if(f)rd(f,function(u){thumb(u,function(j){S.ui.banner=j;save();rh()},1200)})};
+$("#fbg").onchange=function(e){var f=e.target.files[0];if(f)rd(f,function(u){thumb(u,function(j){S.ui.bg=j;save();aui()},1400)})};
+$("#uiac").oninput=function(){S.ui.ac=this.value;save();aui()};
+$("#uirs").onclick=function(){S.ui=Object.assign({},D.ui);save();aui();rh();document.querySelector('[data-s="ui.title"]').value=S.ui.title;document.querySelector('[data-s="ui.sub"]').value=S.ui.sub;$("#uiac").value="#5b8a47"};
+$("#bx").onclick=function(){var d=JSON.stringify(S,function(k,v){return(k==="vb"||k==="pr"||k==="i2i"||k==="key")?undefined:v}),a=document.createElement("a");a.href=URL.createObjectURL(new Blob([d],{type:"application/json"}));a.download="mumuxiao-backup.json";a.click()};
+$("#bi").onclick=function(){$("#bif").click()};
+$("#bif").onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result),key=S.a.key;Object.assign(S,d);S.a=S.a||{};S.a.key=key;save();location.reload()}catch(x){alert("備份檔讀取失敗")}};r.readAsText(f)};
+$("#pim").onchange=function(e){var f=e.target.files[0];if(!f)return;f.arrayBuffer().then(function(b){var v=new DataView(b),o=8,t={};while(o<b.byteLength){var n=v.getUint32(o),ty=String.fromCharCode.apply(null,new Uint8Array(b,o+4,4));if(ty==="tEXt"){var a=new Uint8Array(b,o+8,n),z=a.indexOf(0);t[new TextDecoder().decode(a.slice(0,z))]=new TextDecoder().decode(a.slice(z+1))}o+=12+n}
+try{var c=JSON.parse(t.Comment);S.prompt=c.prompt||"";S.neg=c.uc||"";var p=S.p;if(c.steps)p.steps=c.steps;if(c.scale)p.scale=c.scale;if(c.seed!=null)p.seed=c.seed;if(c.sampler)p.sampler=c.sampler;if(c.noise_schedule)p.sched=c.noise_schedule;if(c.cfg_rescale!=null)p.rescale=c.cfg_rescale;if(c.width&&c.height)p.size=c.width+"x"+c.height;save();location.reload()}catch(x){alert("這張圖沒有讀到生成參數（站上下載的圖若被去除資訊就讀不到）")}})};
+var ENC={},HL=[],DB=null,EDT=null;
+function opn(ta,title){EDT=ta;$("#mt").textContent=title;$("#mta").value=ta.value;$("#md").classList.remove("hide");$("#mta").focus()}
+$("#mta").oninput=function(){EDT.value=this.value;EDT.dispatchEvent(new Event("input",{bubbles:true}))};
+$("#mc").onclick=function(){$("#md").classList.add("hide");EDT=null};
+$("#hc").onclick=function(){$("#hm").classList.add("hide")};
+$("#fa").onclick=function(){var a=S.arts.every(function(o){return o.c});S.arts.forEach(function(o){o.c=!a});save();ral()};
+$("#fc").onclick=function(){var a=S.chars.every(function(o){return o.c});S.chars.forEach(function(o){o.c=!a});save();rc()};
+$("#ant").onclick=function(){var v=$("#nt").value.trim();if(v&&S.tl.indexOf(v)<0){S.tl.push(v);save();$("#nt").value="";ra()}};
+function thumb(u,cb,m){var im=new Image();im.onload=function(){var k=Math.min(1,(m||256)/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",0.8))};im.src=u}
+document.addEventListener("change",function(e){var t=e.target;if(!t.hasAttribute||!t.hasAttribute("data-img")||!t.files[0])return;var c=t.closest("[data-l]"),o=S[c.dataset.l].find(function(x){return x.id===c.dataset.id});rd(t.files[0],function(u){thumb(u,function(j){o.img=j;save();(c.dataset.l==="arts"?ral:rc)();chips();aed()})})});
+function idb(){return new Promise(function(ok){try{var r=indexedDB.open("mumuxiao-h",2);r.onupgradeneeded=function(){if(!r.result.objectStoreNames.contains("h"))r.result.createObjectStore("h",{keyPath:"id"});if(!r.result.objectStoreNames.contains("assets"))r.result.createObjectStore("assets",{keyPath:"id"})};r.onsuccess=function(){DB=r.result;ok()};r.onerror=function(){ok()}}catch(e){ok()}})}
+function tx(m,f){return new Promise(function(ok){if(!DB)return ok(null);try{var t=DB.transaction("h",m),q=f(t.objectStore("h"));t.oncomplete=function(){ok(q&&q.result)};t.onerror=function(){ok(null)}}catch(e){ok(null)}})}
+function saveRefs(){if(!DB)return;try{var t=DB.transaction("assets","readwrite");t.objectStore("assets").put({id:"refs",i2i:S.i2i,vb:S.vb,pr:S.pr});}catch(e){var el=$("#saveState");if(el)el.textContent="參考圖保存失敗，請重新匯出備份"}}
+function loadRefs(){return new Promise(function(ok){if(!DB)return ok();try{var q=DB.transaction("assets","readonly").objectStore("assets").get("refs");q.onsuccess=function(){if(q.result){S.i2i=q.result.i2i||null;S.vb=q.result.vb||[];S.pr=q.result.pr||[]}ok()};q.onerror=function(){ok()}}catch(e){ok()}})}
+var FV=false;
+async function hl(){return((await tx("readonly",function(s){return s.getAll()}))||[]).sort(function(a,b){return b.ts-a.ts})}
+async function rgal(){HL=(await hl()).filter(function(h){return!FV||h.fav});$("#gal").innerHTML=HL.length?HL.map(function(h,i){return'<div style="position:relative"><img src="'+URL.createObjectURL(h.blob)+'" data-h="'+i+'">'+(h.fav?'<span style="position:absolute;top:4px;right:8px">★</span>':"")+"</div>"}).join(""):'<p class="mu">還沒有紀錄。</p>'}
+$("#hfv").onclick=function(){FV=!FV;this.textContent=FV?"看全部":"只看★";rgal()};
+function hd(i){var h=HL[i],u=URL.createObjectURL(h.blob);$("#hb").innerHTML='<img style="width:100%;border-radius:12px" src="'+u+'"><p class="mu">'+new Date(h.ts).toLocaleString()+" · seed "+h.seed+" · "+esc(h.p.model)+"</p><pre>"+esc(h.text)+'</pre><div class="row"><a class="btn" href="'+u+'" download="mumuxiao-'+h.seed+'.png">下載</a><button class="btn" data-hf="'+i+'">'+(h.fav?"★ 已收藏":"☆ 收藏")+'</button><button class="btn" data-hr="'+i+'">還原參數</button><button class="btn" data-hx="'+i+'">刪除</button></div>';$("#hm").classList.remove("hide")}
+$("#hclr").onclick=function(){if(confirm("清空所有歷史？"))tx("readwrite",function(s){return s.clear()}).then(rgal)};
+function b64(buf){var s="",u=new Uint8Array(buf);for(var i=0;i<u.length;i+=8192)s+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return btoa(s)}
+function pic(src,w,h,fit){return new Promise(function(ok,no){var im=new Image();im.onerror=function(){no(new Error("圖片讀取失敗"))};im.onload=function(){
+if(w==="pre"){var r=im.width/im.height;w=r>1.1?1536:r<0.9?1024:1472;h=r>1.1?1024:r<0.9?1536:1472;fit="contain"}
+if(!w){w=im.width;h=im.height}
+var c=document.createElement("canvas");c.width=w;c.height=h;var x=c.getContext("2d");x.fillStyle="#000";x.fillRect(0,0,w,h);
+var k=fit==="cover"?Math.max(w/im.width,h/im.height):Math.min(w/im.width,h/im.height),dw=im.width*k,dh=im.height*k;
+x.drawImage(im,(w-dw)/2,(h-dh)/2,dw,dh);ok(c.toDataURL("image/png").split(",")[1])};im.src=src})}
+function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
+function rr(){
+$("#i2i").innerHTML=S.i2i?'<div class="card"><div class="ct"><img class="th" src="'+S.i2i+'"><div class="g" style="flex:1"><div><label>改動幅度 Strength</label><input type="number" step="0.05" data-s="p.istr" value="'+S.p.istr+'"></div><div><label>加噪點 Noise</label><input type="number" step="0.05" data-s="p.inz" value="'+S.p.inz+'"></div></div><button class="x" data-rm>×</button></div></div>':"";
+$("#vbs").innerHTML=S.vb.map(function(o){return'<div class="card" data-l="vb" data-id="'+o.id+'"><div class="ct"><img class="th" src="'+o.src+'"><div class="g" style="flex:1"><div><label>Information Extracted</label><input type="number" step="0.05" data-k="info" value="'+o.info+'"></div><div><label>Reference Strength</label><input type="number" step="0.05" data-k="str" value="'+o.str+'"></div></div><button class="x" data-del>×</button></div></div>'}).join("");
+$("#prs").innerHTML=S.pr.map(function(o){return'<div class="card" data-l="pr" data-id="'+o.id+'"><div class="ct"><img class="th" src="'+o.src+'"><div class="g" style="flex:1"><div><label>類型</label><select data-k="type">'+["character","style","character&style"].map(function(t){return"<option"+(t===o.type?" selected":"")+">"+t+"</option>"}).join("")+'</select></div><div><label>Strength</label><input type="number" step="0.05" data-k="str" value="'+o.str+'"></div><div><label>Fidelity</label><input type="number" step="0.05" data-k="fid" value="'+o.fid+'"></div></div><button class="x" data-del>×</button></div></div>'}).join("")}
+$("#fi2i").onchange=function(e){var f=e.target.files[0];if(f)rd(f,function(u){S.i2i=u;saveRefs();rr()});e.target.value=""};
+$("#fvb").onchange=function(e){[].forEach.call(e.target.files,function(f){rd(f,function(u){S.vb.push({id:uid(),src:u,info:1,str:0.6});saveRefs();rr()})});e.target.value=""};
+$("#fpr").onchange=function(e){var f=e.target.files[0];if(f)rd(f,function(u){S.pr.push({id:uid(),src:u,type:"character",str:1,fid:1});saveRefs();rr()});e.target.value=""};
+function st(t){$("#st").textContent=t;var m=$("#mobileStatus");if(m)m.textContent=t}
+async function gen(){
+var a=S.a,p=S.p,cs=act(),bs=base();
+if(!a.key||!a.base){st("請先到「設定」填入 API Base 與 Key。");return}
+if(!bs&&!cs.length){st("請先輸入提示詞或啟用角色。");return}
+var wh=p.size.split("x").map(Number),seed=p.seed===""?Math.floor(Math.random()*4294967295):+p.seed,ct=[{x:0.5,y:0.5}],btn={set disabled(v){document.querySelectorAll(".gen").forEach(function(b){b.disabled=v})}};
+var par={params_version:3,width:wh[0],height:wh[1],scale:+p.scale,cfg_rescale:+p.rescale||0,sampler:p.sampler,noise_schedule:p.sched,steps:+p.steps,seed:seed,n_samples:Math.max(1,Math.min(4,+p.n||1)),ucPreset:+p.uc||0,qualityToggle:p.qt!=="0",negative_prompt:S.neg,skip_cfg_above_sigma:p.variety===""?null:+p.variety,
+v4_prompt:{caption:{base_caption:bs,char_captions:cs.map(function(o){return{char_caption:o.prompt,centers:ctr(o)}})},use_coords:S.pos==="c",use_order:true},
+v4_negative_prompt:{caption:{base_caption:S.neg,char_captions:cs.map(function(o){return{char_caption:o.neg||"",centers:ctr(o)}})},legacy_uc:false}};
+btn.disabled=true;st("生成中，請稍候…");
+try{
+var bu=a.base.replace(/\/+$/,""),H={"Content-Type":"application/json",Authorization:"Bearer "+a.key},act2="generate",note="",i;
+if(S.i2i){act2="img2img";par.image=await pic(S.i2i,wh[0],wh[1],"cover");par.strength=+p.istr;par.noise=+p.inz;par.extra_noise_seed=seed}
+if(S.vb.length||S.pr.length){
+if(/-5-/.test(p.model)){note="（V5 暫不支援 Vibe／Precise Reference，已略過參考圖）"}else{
+if(S.vb.length){par.reference_image_multiple=[];par.reference_information_extracted_multiple=[];par.reference_strength_multiple=[];
+for(i=0;i<S.vb.length;i++){var o=S.vb[i],key=o.id+"|"+o.info+"|"+p.model;
+if(!ENC[key]){st("編碼 Vibe "+(i+1)+"…");var rv=await fetch(bu+"/ai/encode-vibe",{method:"POST",headers:H,body:JSON.stringify({image:await pic(o.src),information_extracted:+o.info,model:p.model})});if(!rv.ok)throw new Error("Vibe 編碼失敗 HTTP "+rv.status+" "+(await rv.text()).slice(0,150));ENC[key]=b64(await rv.arrayBuffer())}
+par.reference_image_multiple.push(ENC[key]);par.reference_information_extracted_multiple.push(+o.info);par.reference_strength_multiple.push(+o.str)}
+par.normalize_reference_strength_multiple=!!p.norm}
+if(S.pr.length){par.director_reference_images=[];par.director_reference_descriptions=[];par.director_reference_information_extracted=[];par.director_reference_strength_values=[];par.director_reference_secondary_strength_values=[];
+for(i=0;i<S.pr.length;i++){var q=S.pr[i];par.director_reference_images.push(await pic(q.src,"pre"));par.director_reference_descriptions.push({caption:{base_caption:q.type,char_captions:[]},legacy_uc:false});par.director_reference_information_extracted.push(1);par.director_reference_strength_values.push(+q.str);par.director_reference_secondary_strength_values.push(+(1-q.fid).toFixed(2))}}
+}}
+st("生成中，請稍候…");
+var r=await fetch(bu+"/ai/generate-image",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+a.key},body:JSON.stringify({input:bs,model:p.model,action:act2,parameters:par})});
+if(!r.ok)throw new Error("HTTP "+r.status+" "+(await r.text()).slice(0,200));
+var buf=await r.arrayBuffer(),u=new Uint8Array(buf),bl=[];
+if(u[0]===0x50&&u[1]===0x4b){if(!window.JSZip)throw new Error("JSZip 載入失敗");var z=await JSZip.loadAsync(buf),fs=Object.values(z.files).filter(function(f){return!f.dir});for(i=0;i<fs.length;i++)bl.push(await fs[i].async("blob"))}else bl.push(new Blob([buf],{type:"image/png"}));
+var html="";
+for(i=0;i<bl.length;i++){var src=URL.createObjectURL(bl[i]);html+='<img alt="生成結果" src="'+src+'"><p><a href="'+src+'" download="mumuxiao-'+seed+'-'+i+'.png">下載圖片（或長按圖片儲存）</a></p>';
+await tx("readwrite",function(s){return s.put({id:uid(),ts:Date.now(),blob:bl[i],seed:seed,text:ptxt(),prompt:S.prompt,neg:S.neg,p:JSON.parse(JSON.stringify(S.p))})})}
+$("#out").innerHTML=html;
+$("#out").scrollIntoView({behavior:"smooth",block:"start"});
+st("完成 ✓（seed："+seed+"）"+note);
+}catch(e){var m=String(e&&e.message||e);
+st("失敗："+(/Failed to fetch|NetworkError|Load failed/i.test(m)?"連線被擋下，請確認 Base URL 正確，且此頁面不是在 claude.ai 上開啟。":/429/.test(m)?"並發太多（429），稍等一下再試。"+m:m))}
+btn.disabled=false;
+}
+document.querySelectorAll(".gen").forEach(function(b){b.onclick=gen});
+chips();rc();ra();aed();rpos();rr();rsc();rph();aui();$("#uiac").value=S.ui.ac||"#5b8a47";idb().then(async function(){await loadRefs();rr();rh()});
+})();
+</script>
+</body>
+</html>
